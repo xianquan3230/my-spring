@@ -1,8 +1,12 @@
 package com.lcoil.springframework.beans.factory.support;
 
-import com.lcoil.springframework.beans.factory.BeanFactory;
 import com.lcoil.springframework.beans.BeansException;
 import com.lcoil.springframework.beans.factory.config.BeanDefinition;
+import com.lcoil.springframework.beans.factory.config.BeanPostProcessor;
+import com.lcoil.springframework.beans.factory.config.ConfigurableBeanFactory;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @Classname AbstractBeanFactory
@@ -10,8 +14,10 @@ import com.lcoil.springframework.beans.factory.config.BeanDefinition;
  * @Date 2022/1/8 10:37 AM
  * @Created by l-coil
  */
-public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry implements BeanFactory {
+public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry implements ConfigurableBeanFactory {
 
+    /** BeanPostProcessors to apply in createBean */
+    private final List<BeanPostProcessor> beanPostProcessors = new ArrayList<BeanPostProcessor>();
     @Override
     public Object getBean(String name) throws BeansException {
         return doGetBean(name, null);
@@ -40,5 +46,19 @@ public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry i
     protected abstract BeanDefinition getBeanDefinition(String beanName) throws BeansException;
 
     protected abstract Object createBean(String beanName, BeanDefinition beanDefinition, Object[] args) throws BeansException;
+
+    @Override
+    public void addBeanPostProcessor(BeanPostProcessor beanPostProcessor){
+        this.beanPostProcessors.remove(beanPostProcessor);
+        this.beanPostProcessors.add(beanPostProcessor);
+    }
+
+    /**
+     * Return the list of BeanPostProcessors that will get applied
+     * to beans created with this factory.
+     */
+    public List<BeanPostProcessor> getBeanPostProcessors() {
+        return this.beanPostProcessors;
+    }
 
 }

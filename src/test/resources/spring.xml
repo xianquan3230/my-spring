@@ -5,6 +5,11 @@
 
     <bean id="userService" class="com.lcoil.springframework.test.beans.UserService">
         <property name="uId" value="10001"/>
+        <property name="company" value="腾讯"/>
+        <property name="location" value="深圳"/>
         <property name="userDao" ref="userDao"/>
     </bean>
+
+    <bean class="com.lcoil.springframework.test.common.MyBeanPostProcessor"/>
+    <bean class="com.lcoil.springframework.test.common.MyBeanFactoryPostProcessor"/>
 </beans>
