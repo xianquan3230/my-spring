@@ -4,7 +4,7 @@ import com.lcoil.springframework.beans.BeansException;
 
 /**
  * @Classname ConfigurableApplicationContext
- * @Description TODO
+ * @Description 虚拟机关闭钩子注册调用销毁方法
  * @Date 2022/1/9 11:35 PM
  * @Created by l-coil
  */
