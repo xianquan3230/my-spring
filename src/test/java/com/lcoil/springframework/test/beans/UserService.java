@@ -19,9 +19,9 @@ public class UserService implements BeanNameAware, BeanClassLoaderAware, Applica
     private String uId;
     private String company;
     private String location;
-    private UserDao userDao;
+    private IUserDao userDao;
 
-    @Override
+   @Override
     public void setBeanClassLoader(ClassLoader classLoader) {
         System.out.println("ClassLoader:" + classLoader);
     }
@@ -81,11 +81,11 @@ public class UserService implements BeanNameAware, BeanClassLoaderAware, Applica
         this.location = location;
     }
 
-    public UserDao getUserDao() {
+    public IUserDao getUserDao() {
         return userDao;
     }
 
-    public void setUserDao(UserDao userDao) {
+    public void setUserDao(IUserDao userDao) {
         this.userDao = userDao;
     }
 
