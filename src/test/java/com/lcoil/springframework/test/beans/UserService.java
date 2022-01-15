@@ -2,7 +2,7 @@ package com.lcoil.springframework.test.beans;
 
 import com.lcoil.springframework.beans.BeansException;
 import com.lcoil.springframework.beans.factory.*;
-import com.lcoil.springframework.context.ApplicationContentAware;
+import com.lcoil.springframework.context.ApplicationContextAware;
 import com.lcoil.springframework.context.ApplicationContext;
 
 /**
@@ -11,7 +11,7 @@ import com.lcoil.springframework.context.ApplicationContext;
  * @Date 2022/1/8 10:14 AM
  * @Created by l-coil
  */
-public class UserService implements BeanNameAware, BeanClassLoaderAware, ApplicationContentAware, BeanFactoryAware {
+public class UserService implements BeanNameAware, BeanClassLoaderAware, ApplicationContextAware, BeanFactoryAware {
 
     private ApplicationContext applicationContext;
     private BeanFactory beanFactory;

@@ -11,6 +11,7 @@ import com.lcoil.springframework.test.beans.UserDao;
 import com.lcoil.springframework.test.beans.UserService;
 import com.lcoil.springframework.test.common.MyBeanFactoryPostProcessor;
 import com.lcoil.springframework.test.common.MyBeanPostProcessor;
+import com.lcoil.springframework.test.event.CustomEvent;
 import org.junit.Test;
 import org.openjdk.jol.info.ClassLayout;
 
@@ -125,5 +126,13 @@ public class ApiTest {
         // 2. 调用代理方法
         UserService userService = applicationContext.getBean("userService", UserService.class);
         System.out.println("测试结果：" + userService.queryUserInfo());
+    }
+
+    @Test
+    public void test_event() {
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:spring.xml");
+        applicationContext.publishEvent(new CustomEvent(applicationContext, 1019129009086763L, "成功了！"));
+
+        applicationContext.registerShutdownHook();
     }
 }

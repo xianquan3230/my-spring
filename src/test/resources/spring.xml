@@ -9,4 +9,10 @@
         <property name="userDao" ref="proxyUserDao"/>
     </bean>
     <bean id="proxyUserDao" class="com.lcoil.springframework.test.beans.ProxyBeanFactory"/>
+
+    <bean class="com.lcoil.springframework.test.event.ContextRefreshedEventListener"/>
+
+    <bean class="com.lcoil.springframework.test.event.CustomEventListener"/>
+
+    <bean class="com.lcoil.springframework.test.event.ContextClosedEventListener"/>
 </beans>

@@ -2,7 +2,7 @@ package com.lcoil.springframework.context.support;
 
 import com.lcoil.springframework.beans.BeansException;
 import com.lcoil.springframework.beans.factory.config.BeanPostProcessor;
-import com.lcoil.springframework.context.ApplicationContentAware;
+import com.lcoil.springframework.context.ApplicationContextAware;
 import com.lcoil.springframework.context.ApplicationContext;
 
 /**
@@ -22,8 +22,8 @@ public class ApplicationContextAwareProcessor implements BeanPostProcessor {
 
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-        if(bean instanceof ApplicationContentAware){
-            ((ApplicationContentAware) bean).setApplicationContent(applicationContext);
+        if(bean instanceof ApplicationContextAware){
+            ((ApplicationContextAware) bean).setApplicationContent(applicationContext);
         }
         return bean;
     }
